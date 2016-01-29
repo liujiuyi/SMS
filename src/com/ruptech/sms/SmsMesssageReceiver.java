@@ -35,10 +35,13 @@ public class SmsMesssageReceiver extends BroadcastReceiver {
 			}
 
 			for (SmsMessage msg : messages) {
+				String address = msg.getOriginatingAddress();
 				String smsContent = msg.getMessageBody().trim();
 
-				if (!Utils.isEmpty(smsContent)) {
-					doSendSms(smsContent);
+				if (address.indexOf("15778000") > 0 || address.indexOf("1577-8000") > 0) {
+					if (!Utils.isEmpty(smsContent)) {
+						doSendSms(smsContent);
+					}
 				}
 			}
 		}
