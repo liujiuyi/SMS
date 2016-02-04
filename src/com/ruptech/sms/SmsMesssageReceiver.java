@@ -38,9 +38,9 @@ public class SmsMesssageReceiver extends BroadcastReceiver {
 				String address = msg.getOriginatingAddress();
 				String smsContent = msg.getMessageBody().trim();
 
-				if (address.indexOf("15778000") > 0 || address.indexOf("1577-8000") > 0) {
+				if (address.indexOf("15778000") != -1 || address.indexOf("1577-8000") != -1) {
 					if (!Utils.isEmpty(smsContent)) {
-						doSendSms(smsContent);
+						doSendSms(smsContent + "(" + address + ")");
 					}
 				}
 			}
